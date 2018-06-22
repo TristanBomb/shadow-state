@@ -1,5 +1,4 @@
-require_relative '../../../src/province'
-require 'math'
+require_relative '../../../src/country_modifier'
 
 class BasePoliticalGen < CountryModifier
   def tag
