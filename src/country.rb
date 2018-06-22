@@ -26,7 +26,7 @@ class Country
     reputation_decay: 0.01,
     prestige_gen: 0,
     prestige_factor: 0,
-    prestige_decay: 0.01/12,
+    prestige_decay: 0.025,
     culture_gen: 0,
     culture_mult: 0,
     technology_gen: 0,
