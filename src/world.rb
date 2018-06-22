@@ -14,8 +14,8 @@ class World
   def monthly_tick
     @date = @date.next_month
     @countries.each do |country|
-      country.on_monthly_tick
-      country.on_yearly_tick if date.month == 1
+      country.monthly_tick
+      country.yearly_tick if date.month == 1
     end
   end
   def country_by_tag(tag)

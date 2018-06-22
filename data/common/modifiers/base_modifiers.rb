@@ -1,14 +1,15 @@
 require_relative '../../../src/country_modifier'
+include Math
 
 class BasePoliticalGen < CountryModifier
   def tag
     :base_political_gen
   end
 
-  def on_monthly_tick
-    @country.stats[:pol_power]      += @country.attributes[:pol_power_gen]      * Math.exp(@country.attributes[:pol_power_factor])
-    @country.stats[:diplo_cap]      += @country.attributes[:diplo_cap_gen]      * Math.exp(@country.attributes[:diplo_cap_factor])
-    @country.stats[:mil_leadership] += @country.attributes[:mil_leadership_gen] * Math.exp(@country.attributes[:mil_leadership_factor])
+  def monthly_tick
+    @country.vars[:pol_power]      += @country.stats[:pol_power_gen]      * exp(@country.stats[:pol_power_factor])
+    @country.vars[:diplo_cap]      += @country.stats[:diplo_cap_gen]      * exp(@country.stats[:diplo_cap_factor])
+    @country.vars[:mil_leadership] += @country.stats[:mil_leadership_gen] * exp(@country.stats[:mil_leadership_factor])
     super
   end
 end
@@ -18,11 +19,56 @@ class BaseStability < CountryModifier
     :base_stability
   end
 
-  def on_monthly_tick
-    stab = @country.stats[:stability]
-    base_stab = @country.attributes[:stability_base]
-    stab_decay = @country.attributes[:stability_decay]
-    stab -= (stab - base_stab) * stab_decay
+  def monthly_tick
+    @country.vars[:stability] = @country.vars[:stability] - (@country.vars[:stability] - @country.stats[:stability_base]) * @country.stats[:stability_decay]
+    super
+  end
+end
+
+class BaseReputation < CountryModifier
+  def tag
+    :base_reputation
+  end
+
+  def monthly_tick
+    rep = @country.vars[:reputation]
+    base_rep  = @country.stats[:reputation_base]
+    rep_decay = @country.stats[:reputation_decay]
+    rep -= (rep - base_rep) * rep_decay
+    super
+  end
+end
+
+class BaseTechnology < CountryModifier
+  def tag
+    :base_technology
+  end
+
+  def monthly_tick
+    @country.vars[:technology] += @country.stats[:technology_gen] * exp(@country.stats[:technology_factor])
+    super
+  end
+end
+
+class BaseCulture < CountryModifier
+  def tag
+    :base_culture
+  end
+
+  def monthly_tick
+    @country.vars[:culture] += @country.stats[:culture_gen] * exp(@country.stats[:culture_factor])
+    super
+  end
+end
+
+class BasePrestige < CountryModifier
+  def tag
+    :base_prestige
+  end
+
+  def monthly_tick
+    @country.vars[:prestige] *= (1.0 - @country.stats[:prestige_decay])
+    @country.vars[:prestige] += @country.stats[:prestige_gen] * exp(@country.stats[:prestige_factor])
     super
   end
 end

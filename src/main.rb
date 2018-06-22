@@ -1,26 +1,36 @@
-require_relative 'country_modifier'
+require_relative '../data/common/modifiers/base_modifiers'
 $w = World.new
 $w.add_country(:germany, color: "#224444")
+
 # # #
+
 germany = $w.country_by_tag(:germany)
+
 # # #
-class ModifierStabilityIncreased < CountryModifier
+
+class StabilityIncreased < CountryModifier
   def tag
     :stability_increased
   end
   def effects
-    { stability: 0.1 }
+    { stability_base: 0.1 }
   end
 end
-germany.apply_modifier(ModifierStabilityIncreased)
+germany.apply_modifier(StabilityIncreased)
+
 # # #
-germany.apply_modifier(Class.new(CountryModifier) do
-  def tag
-    :happiness_decreased
-  end
-  def effects
-    {happiness: -0.2 }
-  end
-end)
+
+germany.apply_modifier(BaseStability)
+
 # # #
-puts germany.attributes
+
+$w.monthly_tick
+arr = []
+germany.modifiers.each {|m| arr << m.tag}
+puts arr
+puts germany.stats
+puts germany.vars
+
+puts "Resetting..."
+germany.reset_vars
+puts germany.vars

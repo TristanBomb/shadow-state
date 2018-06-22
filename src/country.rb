@@ -1,61 +1,15 @@
 require_relative 'world'
+require_relative 'country_defaults'
+
 class Country
   attr_reader :tag # localization and country name
   attr_reader :world # the world this country is in
-  attr_reader :attributes # contains static attributes (modifiable with modifiers only)
-  attr_accessor :stats # contains mutable resources and statistics
+  attr_reader :stats # contains values that can only be modified by modifiers (don't try to directly modify these, it won't work)
+  attr_accessor :vars # contains mutable values
   attr_accessor :gov_type # :democracy, :monarchy, :socialist, :capitalist, :nationalist
   attr_accessor :flag # path to national flag
   attr_accessor :color # map color
   attr_accessor :modifiers # a Set of CountryModifiers
-
-  # TODO: Define attributes
-  BASE_ATTRIBUTES = {
-    pol_power_gen: 10,
-    pol_power_factor: 0,
-    diplo_cap_gen: 10,
-    diplo_cap_factor: 0,
-    mil_leadership_gen: 10,
-    mil_leadership_factor: 0,
-    income: 0,
-    income_factor: 0,
-    expenses: 0,
-    stability_base: 0.5,
-    stability_decay: 0.01,
-    reputation_base: 0,
-    reputation_decay: 0.01,
-    prestige_gen: 0,
-    prestige_factor: 0,
-    prestige_decay: 0.025,
-    culture_gen: 0,
-    culture_mult: 0,
-    technology_gen: 0,
-    technology_factor: 0,
-    happiness: 0.5,
-    unrest_gen: 0,
-    unrest_factor: 0,
-    unrest_decay: 0.01,
-    troop_attack: 1,
-    troop_defense: 1,
-    troop_maneuver: 1,
-    troop_morale: 1,
-    tax_factor: 0.5,
-    recruitment_factor: 0.01
-  }
-  BASE_ATTRIBUTES.default = 0
-
-  BASE_STATS = {
-    pol_power: 0,
-    diplo_cap: 0,
-    mil_leadership: 0,
-    treasury: 0,
-    stability: 0,
-    technology: 0,
-    culture: 0,
-    unrest: 0,
-    manpower: 0
-  }
-  BASE_STATS.default = 0
 
   def initialize(tag, world:, flag: nil, color: "#000000", gov_type: :monarchy)
     if world.countries.select{|c| c.tag == tag}.any?
@@ -66,37 +20,54 @@ class Country
     @flag = flag
     @color = color
     @modifiers = Set[]
-    @attributes = BASE_ATTRIBUTES.dup
-    @stats = BASE_STATS.dup
+    @stats = CountryDefaults.stats
+    @vars = CountryDefaults.vars
   end
 
-  def on_monthly_tick
-    @modifiers.each { |mod| mod.on_monthly_tick }
-    update_attributes
+  def monthly_tick
+    @modifiers.each { |mod| mod.monthly_tick }
+    update_stats
   end
 
-  def on_yearly_tick
-    @modifiers.each { |mod| mod.on_yearly_tick }
+  def yearly_tick
+    @modifiers.each { |mod| mod.yearly_tick }
   end
 
-  def apply_modifier(mod_class)
-    mod = mod_class.new(self)
-    if @modifiers.select{|m| m.tag == mod_class}.any?
-      puts "country tag #{tag} exists already!"
-    end
-    @modifiers.add(mod)
-    mod.on_applied
-    update_attributes
-    true
+  def to_s
+    @tag.to_s
   end
 
-  def update_attributes
-    @attributes = BASE_ATTRIBUTES.dup
-    @modifiers.each do |mod|
-      h = mod.effects
-      BASE_ATTRIBUTES.each do |attr_k, attr_v|
-        @attributes[attr_k] += h[attr_k] || 0
+  def to_sym
+    @tag.to_sym
+  end
+
+  def apply_modifier(mod_class, override: false, date: nil)
+    collisions = @modifiers.select{|m| m.class == mod_class}
+    if collisions.any? && override then
+      collisions.each do |m|
+        warn "modifier #{mod_class.to_s} already exists on country #{@tag}, removing old modifier"
+        m.remove
       end
+    elsif collisions.any? then
+      warn "modifier #{mod_class.to_s} already exists on country #{@tag}, not adding another"
+      false
+    else
+      mod = mod_class.new(self, date: date)
+      @modifiers.add(mod)
+      mod.apply
+      update_stats
+      true
     end
+  end
+
+  def update_stats
+    @stats = CountryDefaults.stats
+    @modifiers.each do |mod|
+      stats.merge!(mod.effects) { |key, v1, v2| v1 + v2 }
+    end
+  end
+
+  def reset_vars
+    @vars = CountryDefaults.stats_to_vars(@stats)
   end
 end

@@ -4,9 +4,10 @@ class CountryModifier
   attr_reader :world # The world this modifier is in
   attr_accessor :expiration_date # When this modifier expires
 
-  def initialize(country)
+  def initialize(country, date: nil)
     @country = country
     @world = country.world
+    @expiration_date = date
   end
 
   def tag
@@ -16,23 +17,23 @@ class CountryModifier
       false
   end
 
-  def on_applied
+  def apply
   end
 
-  def on_removed
+  def remove
     @country.modifiers.delete(self)
-    @country.update_attributes
+    @country.update_stats
   end
 
-  def on_expiry
-    on_removed
+  def expire
+    remove
   end
 
-  def on_monthly_tick
-    if @expiration_date && world.date >= @expiration_date then on_expiry end
+  def monthly_tick
+    if @expiration_date && (world.date >= @expiration_date) then expire end
   end
 
-  def on_yearly_tick
+  def yearly_tick
   end
 
   def effects
