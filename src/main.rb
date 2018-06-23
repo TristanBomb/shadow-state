@@ -1,10 +1,13 @@
-require_relative '../data/common/modifiers/base_modifiers'
+require_relative '../data/common/modifiers/base_country_modifiers'
+require_relative 'world'
+require_relative 'country'
+
 $w = World.new
 $w.add_country(:germany, color: "#224444")
 
 # # #
 
-germany = $w.country_by_tag(:germany)
+germany = $w.tag2country(:germany)
 
 # # #
 

@@ -1,5 +1,6 @@
 require 'date'
 require 'set'
+
 class World
   attr_accessor :countries # Contains a list of all countries in this world
   attr_accessor :date # Date can be changed, but this should be avoided most of the time
@@ -18,7 +19,7 @@ class World
       country.yearly_tick if date.month == 1
     end
   end
-  def country_by_tag(tag)
+  def tag2country(tag)
     @countries.select{ |c| c.tag == tag }.sample
   end
 end

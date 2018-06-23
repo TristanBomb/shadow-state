@@ -60,7 +60,7 @@ module CountryDefaults
     return vars
   end
 
-  def stats_to_vars(cstats) # NOTE: Should this be an event instead?
+  def stats2vars(cstats) # NOTE: Should this be an event instead?
     {
       pol_power: cstats[:pol_power_gen] * exp(cstats[:pol_power_factor]) * 12,
       diplo_cap: cstats[:diplo_cap_gen] * exp(cstats[:diplo_cap_factor]) * 12,
