@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: CountryDefaults
+  
+    &mdash; Documentation by YARD 0.9.14
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "CountryDefaults";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (C)</a> &raquo;
+    
+    
+    <span class="title">CountryDefaults</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: CountryDefaults
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>src/country_defaults.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stats-class_method" title="stats (class method)">.<strong>stats</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stats2vars-class_method" title="stats2vars (class method)">.<strong>stats2vars</strong>(cstats)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>NOTE: Should this be an event instead?.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vars-class_method" title="vars (class method)">.<strong>vars</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="stats-class_method">
+  
+    .<strong>stats</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/country_defaults.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stats'>stats</span>
+  <span class='comment'># Note: Less efficient than using constants, but also less likely to lead to hard-to-track bugs if the constant is accidentally mutated
+</span>  <span class='id identifier rubyid_stats'>stats</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>pol_power_gen:</span> <span class='int'>10</span><span class='comma'>,</span>
+    <span class='label'>pol_power_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>diplo_cap_gen:</span> <span class='int'>10</span><span class='comma'>,</span>
+    <span class='label'>diplo_cap_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>mil_leadership_gen:</span> <span class='int'>10</span><span class='comma'>,</span>
+    <span class='label'>mil_leadership_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>income:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>income_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>expenses:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>stability_base:</span> <span class='float'>0.5</span><span class='comma'>,</span>
+    <span class='label'>stability_decay:</span> <span class='float'>0.01</span><span class='comma'>,</span>
+    <span class='label'>reputation_base:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>reputation_decay:</span> <span class='float'>0.01</span><span class='comma'>,</span>
+    <span class='label'>prestige_gen:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>prestige_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>prestige_decay:</span> <span class='float'>0.025</span><span class='comma'>,</span>
+    <span class='label'>technology_gen:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>technology_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>culture_gen:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>culture_mult:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>happiness:</span> <span class='float'>0.5</span><span class='comma'>,</span>
+    <span class='label'>unrest_gen:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>unrest_factor:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>unrest_decay:</span> <span class='float'>0.01</span><span class='comma'>,</span>
+    <span class='label'>troop_attack:</span> <span class='int'>1</span><span class='comma'>,</span>
+    <span class='label'>troop_defense:</span> <span class='int'>1</span><span class='comma'>,</span>
+    <span class='label'>troop_maneuver:</span> <span class='int'>1</span><span class='comma'>,</span>
+    <span class='label'>troop_morale:</span> <span class='int'>1</span><span class='comma'>,</span>
+    <span class='label'>tax_factor:</span> <span class='float'>0.5</span><span class='comma'>,</span>
+    <span class='label'>recruitment_factor:</span> <span class='float'>0.01</span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_stats'>stats</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_stats'>stats</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stats2vars-class_method">
+  
+    .<strong>stats2vars</strong>(cstats)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>NOTE: Should this be an event instead?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/country_defaults.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stats2vars'>stats2vars</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='rparen'>)</span> <span class='comment'># NOTE: Should this be an event instead?
+</span>  <span class='lbrace'>{</span>
+    <span class='label'>pol_power:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:pol_power_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:pol_power_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>12</span><span class='comma'>,</span>
+    <span class='label'>diplo_cap:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:diplo_cap_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:diplo_cap_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>12</span><span class='comma'>,</span>
+    <span class='label'>mil_leadership:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:mil_leadership_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:mil_leadership_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>12</span><span class='comma'>,</span>
+    <span class='label'>treasury:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:income</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:income_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>12</span><span class='comma'>,</span>
+    <span class='label'>stability:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:stability_base</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>reputation:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:reputation_base</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>prestige:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:prestige_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:prestige_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:prestige_decay</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span> <span class='comment'># WARNING: Infinities can arise if decay is zero!
+</span>    <span class='label'>technology:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:technology_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:technology_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>240</span><span class='comma'>,</span>
+    <span class='label'>culture:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:culture_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:culture_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>240</span><span class='comma'>,</span>
+    <span class='label'>unrest:</span> <span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:unrest_gen</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:unrest_factor</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='id identifier rubyid_cstats'>cstats</span><span class='lbracket'>[</span><span class='symbol'>:unrest_decay</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>*</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='comment'># WARNING: Infinities can arise if decay is zero!
+</span>    <span class='label'>manpower:</span> <span class='int'>0</span> <span class='comment'># TODO: Add whatever calculation is necessary whenever manpower gets done
+</span>  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vars-class_method">
+  
+    .<strong>vars</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/country_defaults.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_vars'>vars</span>
+  <span class='comment'># Note: Less efficient than using constants, but also less likely to lead to hard-to-track bugs if the constant is accidentally mutated
+</span>  <span class='id identifier rubyid_vars'>vars</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>pol_power:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>diplo_cap:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>mil_leadership:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>treasury:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>stability:</span> <span class='float'>0.5</span><span class='comma'>,</span>
+    <span class='label'>reputation:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>prestige:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>technology:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>culture:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>unrest:</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='label'>manpower:</span> <span class='int'>0</span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_vars'>vars</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_vars'>vars</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jul  8 17:02:07 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.14 (ruby-2.5.1).
+</div>
+
+    </div>
+  </body>
+</html>
